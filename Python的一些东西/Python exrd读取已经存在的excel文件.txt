@@ -1,0 +1,31 @@
+import xlrd
+
+data = xlrd.open_workbook('excelReadTest.xls')	#打开一个已经存在的excel文件
+table = data.sheets()[0]		#这里是按照sheet的顺序选取的
+id_lists = table.col_values(0)	#选取了第一列并赋给变量，注意是字符串列表形式
+
+这个模块还是挺容易使用的，
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+http://www.jb51.net/article/42635.htm
+http://www.2cto.com/kf/201306/223474.html
+http://www.jb51.net/article/44113.htm
+http://cache.baiducontent.com/c?m=9f65cb4a8c8507ed4fece763105392230e54f72177918a4823c3933ec42e0a161971e3cc7a624519c780212757a00b17acaa6b2e200351e0d199df14&p=882a9544d79c1dbc0be296385051c1&newp=857dc35984904ead08e2947f0c4b80231610db2151d4d317&user=baidu&fm=sc&query=python+excel&qid=f150b6fd000272cf&p1=5

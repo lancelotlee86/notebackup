@@ -1,0 +1,7 @@
+巧用self.flag判断哪里有我需要的数据
+
+参考
+*官方文档		https://docs.python.org/3.4/library/html.parser.html?highlight=html.parser#module-html.parser
+*几个比较简单的例子	http://bbs.csdn.net/topics/360004132
+*http://www.2cto.com/kf/201306/223474.html
+*另一个模块SGMLParser	http://www.open-open.com/lib/view/open1329700631343.html

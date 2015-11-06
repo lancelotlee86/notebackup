@@ -1,0 +1,9 @@
+
+安装 
+sudo zypper in aria2
+
+使用(for example)
+aria2c + url_address
+
+参考：
+http://wiki.ubuntu.org.cn/Aria2

@@ -1,0 +1,10 @@
+1.安装依赖项(https://github.com/yyuu/pyenv/wiki/Common-build-problems#requirements)
+  $sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm
+2.安装pyenv(https://github.com/yyuu/pyenv-installer)
+  $curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+3.通过用户.profile添加路径到PATH
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+4.安装3.4.2虚拟环境
+  pyenv install 3.4.2

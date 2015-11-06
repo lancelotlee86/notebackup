@@ -1,0 +1,2 @@
+plink -C -v -N -D 127.0.0.1:7070 lancelot@157.7.85.133 -P 22 -pw fry
+

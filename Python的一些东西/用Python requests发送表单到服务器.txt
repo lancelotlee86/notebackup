@@ -1,0 +1,89 @@
+0.我们要通过模拟表单提交，网址如下最终代码如下‘http://www2.ncwu.edu.cn/xinxi/file_new/jsjkscj/18_T0Search.asp’。
+import requests
+
+headers={'Content-Type': 'application/x-www-form-urlencoded',
+         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0; QQBrowser/8.0.1374.400) like Gecko',
+         'Accept-Language': 'zh-CN',
+         'Pragma': 'no-cache',
+         'Accept': 'text/html, application/xhtml+xml, */*'
+         }
+
+url = 'http://www2.ncwu.edu.cn/xinxi/file_new/jsjkscj/18_T0SearchDo.asp'
+payload = 'ncrekc=40&T0ZKZH=&T0SFZH=410304199312140512&submit=%CC%E1%BD%BB%B2%E9%D1%AF'
+r = requests.post(url,data = payload,headers = headers)
+
+1.分析表单数据
+  我先将html中的<form></form>标签中的内容贴出来
+<Form action="18_T0SearchDo.asp" method="post">
+  <table width="273" height="137" border="1" align="center" cellspacing="1">
+   <tr><td align="right"><font size="2"><b>考次:</b></font></td>
+<td>
+  <select size="1" name="ncrekc">
+  <option value="40" selected>2014年9月份(第40次)</option>
+  <option value="39">2014年3月份(第39次)</option>
+  <option value="38">2013年9月份(第38次)</option>
+  <option value="37">2013年3月份(第37次)</option>
+  <option value="36">2012年9月份(第36次)</option>
+  <option value="35">2012年3月份(第35次)</option>
+  <option value="34">2011年9月份(第34次)</option>
+  <option value="33">2011年3月份(第33次)</option>
+  <option value="32">2010年9月份(第32次)</option>
+  <option value="31">2010年3月份(第31次)</option>
+  <option value="30">2009年9月份(第30次)</option>
+  <option value="29">2009年3月份(第29次)</option>
+  <option value="28">2008年9月份(第28次)</option>
+  <option value="27">2008年4月份(第27次)</option>
+  <option value="26">2007年9月份(第26次)</option>
+  <option value="25">2007年4月份(第25次)</option>
+  <option value="24">2006年9月份(第24次)</option>
+  <option value="23">2006年4月份(第23次)</option>
+  <option value="22">2005年9月份(第22次)</option>
+  <option value="21">2005年4月份(第21次)</option>
+  
+  </select></td></tr>
+    <tr> 
+      <td align="right"><div align="center"><FONT size="2"><b>准考证号</b></font></div></td>
+      <td><input type="text" name="T0ZKZH" maxlength="16" size="20"> </td>
+    </tr>
+    <tr> 
+      <td align="right"><div align="center"><FONT size="2"><b>身份证号</b></font></div></td>
+      <td><input type="text" name="T0SFZH" maxlength="18" size="20"> </td>
+    </tr>
+    <tr> 
+      <td align="right" colspan="3"><div align="center"> 
+          <input name="submit" type="submit" value="提交查询">
+          <input type="reset" value="清除">
+          &nbsp; </div></td>
+    </tr>
+  </table>
+</form>
+
+*<form>的action属性是这个表单被发送的位置，也就是http://www2.ncwu.edu.cn/xinxi/file_new/jsjkscj/18_T0SearchDo.asp
+*每个要用户输入或者选择的地方，比如<input>、<select>、<select>等等，要注意他们的value属性和name属性
+
+2.了解requests模块是怎么使用的
+最简单的使用是
+import requests
+
+url = 'http://...'
+payload = { 'name1': 'value1', 'name2': 'value2',....}
+r.requests.post( url, data = payload, ...)
+
+r.status_code
+r.content
+...
+
+*payload是一个字典，一个输入或选择的地方的name属性对应一个value
+*post方法会自动将payload中的数据urlencode，但有时我们不需要encode，所以可以直接将一个String赋给payload
+*返回的结果会保存在对象r中，他有各种属性，比如例子中的status_code、content等，可以方便的查看
+*post中可以添加其他标准request的attr，比如headers。正如最前面的例子中的那样
+
+
+
+*Python3中是没有urllib2的
+*Python3中是要用urllib.parse的
+
+参考网址
+*python requests的安装与简单运用	http://www.zhidaow.com/post/python-requests-install-and-brief-introduction
+*如何在requests post时不做urlencode	http://www.shellsec.com/tech/80694.html
+*一个在线转码工具			http://tool.chinaz.com/Tools/URLEncode.aspx

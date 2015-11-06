@@ -1,0 +1,27 @@
+因为我用的是Python3.4，所以要用xlwt3，Python2的用户要使用xlwt，不过两者的API完全兼容
+对于操作excel文件，还有一个模块，csv，是Python内置的模块，但是输出的是.csv文件，
+而且不是太好用，所以能用xlwt3的就用这个好了。
+
+如果想打开一个文件并修改的话，就要使用另一个模块，忘记叫什么了。。，。
+跟xlrd与xlwt是一家的，需要这两个模块的支持
+
+
+import xlwt3
+
+workbook = xlwt3.Workbook(encoding = 'UTF-8')	#这里要注意，最好给个编码类型，
+worksheet = workbook.add_sheet('My Worksheet')
+list = [['a','b','c','d'],['e','f','g','h']]
+
+j = 0
+for l in list[1]:
+    worksheet.write(0,j,l,style)				#这是向单元格写数据的方法
+												#第三个参数是要写入的数据
+												#注意一定要是字符串
+    j = j + 1
+
+i = 0
+for value in list[1]:
+    worksheet.write(1,i,value,style)
+    i = i + 1
+
+workbook.save('Excel_Workbook.xls')				#保存即可
