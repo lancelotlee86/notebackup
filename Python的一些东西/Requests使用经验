@@ -1,0 +1,22 @@
+1. 传参数有两种格式，一种是data=，一种是param=（url中）
+```
+>>> payload = {'key1': 'value1', 'key2': 'value2'}
+>>> r = requests.get("http://httpbin.org/get", params=payload)
+>>> print(r.url)
+http://httpbin.org/get?key2=value2&key1=value1
+```
+```
+>>> payload = {'key1': 'value1', 'key2': 'value2'}
+>>> r = requests.post("http://httpbin.org/post", data=payload)
+>>> print r.text
+{
+  ...
+  "form": {
+    "key2": "value2",
+    "key1": "value1"
+  },
+  ...
+}
+```
+
+2.
